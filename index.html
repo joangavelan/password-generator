@@ -13,21 +13,23 @@
     <h1 class="title">Password generator</h1>
 
     <!-- password -->
-    <div class="password-container">
-      <p class="password">vK8)kL7*rJ9]hT4*wH6&</p>
+    <div class="password-row">
+      <div class="password-container">
+        <p class="password"></p>
+      </div>
       <i class="far fa-clipboard clipboard"></i>
     </div>
 
     <!-- length -->
     <div class="length-row">
-      <h3>length: <span class="password-length">17</span></h3>
+      <h3>length: <span class="password-length"></span></h3>
       <!-- range container -->
       <div class="range-container">
         <div class="value-left">4</div>
         <!-- range -->
         <div class="range-wrapper">
           <div class="bar"><span class="fill"></span></div>
-          <input type="range" class="range"  min="0" max="100" value="50">
+          <input type="range" class="range"  min="0" max="100" value="80">
         </div>
         <!----------->
         <div class="value-right">20</div>
@@ -35,20 +37,28 @@
     </div>
 
     <!-- settings -->
-    <div class="settings">
+    <div class="settings-container">
       <h3>Settings</h3>
       <div class="row">
         <p>Include numbers</p>
         <label class="toggle">
-          <input type="checkbox" checked>
+          <input type="checkbox" class="settings" name="numbers" checked>
           <div class="fill"></div>
         </label>
       </div>
   
       <div class="row">
-        <p>Include letters</p>
+        <p>Include uppercase</p>
         <label class="toggle">
-          <input type="checkbox" checked>
+          <input type="checkbox" class="settings" name="uppercase" checked>
+          <div class="fill"></div>
+        </label>
+      </div>
+
+      <div class="row">
+        <p>Include lowercase</p>
+        <label class="toggle">
+          <input type="checkbox" class="settings" name="lowercase" checked>
           <div class="fill"></div>
         </label>
       </div>
@@ -56,7 +66,7 @@
       <div class="row">
         <p>Include symbols</p>
         <label class="toggle">
-          <input type="checkbox" checked>
+          <input type="checkbox" class="settings" name="symbols" checked>
           <div class="fill"></div>
         </label>
       </div>
