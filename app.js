@@ -76,13 +76,15 @@ const App = (() => {
         rangeEl.addEventListener('input', rangeValueRender);
     }
 
+    const init = () => {
+        rangeValueRender();
+        listeners();
+    }
 
     return {
-        rangeValueRender,
-        listeners
+        init
     }
 
 })();
 
-App.rangeValueRender();
-App.listeners();
+App.init();
