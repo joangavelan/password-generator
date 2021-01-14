@@ -9,7 +9,7 @@ const App = (() => {
     
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     const symbols = '!@#$%^&*(){}[]=<>/,.';
-    const numbers = '123456789';
+    const numbers = '0123456789';
     
     const ranIndex = (str) => str[Math.floor(Math.random() * str.length)];
     
@@ -34,37 +34,40 @@ const App = (() => {
     }
 
     const rangeValueRender = () => {
-        const rangeValue = Math.floor((rangeEl.value / 6) + 4);
-        passwordLengthEl.textContent = rangeValue;
+        //range value 4 to 20
+        const validRangeValue = Math.floor((rangeEl.value / 6) + 4);
+        passwordLengthEl.innerText = validRangeValue;
+        //range bar fill effect
         rangeFillEl.style.width = `${rangeEl.value}%`;    
     }
     
     const generatePassword = () => {
         let password = '';
-        const passwordLength = +passwordLengthEl.textContent;
+        //we take the rendered value by the range input
+        const length = +(passwordLengthEl.innerText);
         const enabledSettings = [];
         for(let setting of settingsEl) {
-            if(setting.checked === true) enabledSettings.push(setting.name);
+            if(setting.checked === true) enabledSettings.push(setting.id);
         }
     
         if(enabledSettings.length >= 1) {
-            for(let i = 0; i < passwordLength; i++) {
+            for(let i = 0; i < length; i++) {
                 password += getCharacter(ranIndex(enabledSettings));
             }
-            passwordEl.textContent = password;
+            passwordEl.innerText = password;
         }
         else alert('You must enable at least 1 setting')
     }
     
     const copyToClipboard = htmlElement => {
         if(!htmlElement) return;
-        const elementText = htmlElement.textContent;
+        const elementText = htmlElement.innerText;
         const inputElement = document.createElement('input');
         inputElement.setAttribute('value', elementText);
         document.body.appendChild(inputElement);
         inputElement.select();
         document.execCommand('copy');
-        inputElement.parentNode.removeChild(inputElement);
+        inputElement.remove();
     }
 
     const listeners = () => {
